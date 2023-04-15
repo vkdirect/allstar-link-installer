@@ -33,3 +33,5 @@ sudo apt -y install asl-dahdi-linux
 sudo apt -y install asl-update-node-list
 
 echo "AllStarLink installation complete."
+
+exit 0
