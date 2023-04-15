@@ -1,15 +1,16 @@
 #!/bin/bash
 
 # Prompt user to update packages
-read -p "Would you like to update your packages? (y/n) " choice
-if [[ $choice =~ ^[Yy]$ ]]; then
+read -p "Would you like to update your packages? (y/n) " choice1
+read -p "Would you like to install curl and gpg? (y/n) " choice2
+
+if [ "$choice1" = "y" ] || [ "$choice1" = "Y" ]; then
   echo "Updating packages..."
   sudo apt update
 fi
 
 # Prompt user to install required packages
-read -p "Would you like to install curl and gpg? (y/n) " choice
-if [[ $choice =~ ^[Yy]$ ]]; then
+if [ "$choice2" = "y" ] || [ "$choice2" = "Y" ]; then
   echo "Installing curl and gpg..."
   sudo apt install curl gpg
 fi
