@@ -9,6 +9,12 @@ if [ "$choice1" = "y" ] || [ "$choice1" = "Y" ]; then
   sudo apt update
 fi
 
+if [ "$choice1" = "y" ] || [ "$choice1" = "Y" ] 
+then
+  echo "Installing curl and gpg..."
+  sudo apt update
+fi
+
 # Prompt user to install required packages
 if [ "$choice2" = "y" ] || [ "$choice2" = "Y" ]; then
   echo "Installing curl and gpg..."
