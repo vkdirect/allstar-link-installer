@@ -1,24 +1,27 @@
 #!/bin/bash
 
-# Prompt user to update packages
-read -p "Would you like to update your packages? (y/n) " choice
-if [[ $choice =~ ^[Yy]$ ]]; then
-  echo "Updating packages..."
-  sudo apt update
+# Prompt user for confirmation before proceeding
+read -p "This script will install AllStarLink on your system. Do you wish to continue? (y/n) " -r
+echo    # Move to a new line
+if [[ ! $REPLY =~ ^[Yy]$ ]]
+then
+    echo "Installation canceled."
+    exit 1
 fi
 
-# Prompt user to install required packages
-read -p "Would you like to install curl and gpg? (y/n) " choice
-if [[ $choice =~ ^[Yy]$ ]]; then
-  echo "Installing curl and gpg..."
-  sudo apt install curl gpg
-fi
+# Update package index and install necessary packages
+echo "Updating package index..."
+sudo apt update
+echo "Installing curl and gpg..."
+sudo apt install curl gpg -y
 
 # Download and install AllStarLink repository
-echo "Downloading and installing AllStarLink repository..."
+echo "Downloading AllStarLink repository installation script..."
 cd /tmp
 wget http://apt.allstarlink.org/repos/asl_builds/install-allstarlink-repository
+echo "Setting executable permission on installation script..."
 chmod +x install-allstarlink-repository
+echo "Running installation script..."
 sudo ./install-allstarlink-repository
 
 # Install required packages for AllStarLink
@@ -29,4 +32,4 @@ sudo apt -y install allstar-helpers
 sudo apt -y install asl-dahdi-linux
 sudo apt -y install asl-update-node-list
 
-echo "All packages and repositories have been installed."
+echo "AllStarLink installation complete."
