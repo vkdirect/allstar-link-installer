@@ -26,10 +26,10 @@ sudo ./install-allstarlink-repository
 
 # Install required packages for AllStarLink
 echo "Installing required packages for AllStarLink..."
-sudo apt -y install linux-headers-$(uname -r)
-sudo apt -y install asl-asterisk
-sudo apt -y install allstar-helpers
-sudo apt -y install asl-dahdi-linux
-sudo apt -y install asl-update-node-list
+apt -y install linux-headers-$(uname -r)
+apt -y install asl-asterisk
+apt -y install allstar-helpers
+apt -y install asl-dahdi-linux
+apt -y install asl-update-node-list
 
 echo "AllStarLink installation complete."
